@@ -5,30 +5,35 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 20px;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 #codeEntry, #hiddenMessage {
     background-color: #fff;  /* White background for the "page" */
     border: 1px solid #d1c7b7;  /* Subtle border like a book page */
-    padding: 40px;  /* Generous padding for a book-like feel */
+    padding: 20px;  /* Padding adjusted for smaller screens */
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
-    max-width: 60%;  /* A narrower width to mimic book pages */
-    max-height: 80%;
+    max-width: 100%;  /* Allow full width on small screens */
+    width: 100%;  /* Full width on smaller screens */
+    max-height: 80vh;
     margin: auto;
     overflow-y: auto;
     line-height: 1.8;  /* Comfortable line height */
     text-align: justify;  /* Justify text like a novel */
+    box-sizing: border-box;
 }
 
 input {
     padding: 10px;
     font-size: 1.2em;
-    width: 200px;
+    width: 100%;  /* Adjust input width to be fluid */
     border: 2px solid #ccc;
     border-radius: 5px;
     margin-top: 20px;
+    box-sizing: border-box;
 }
 
 button {
@@ -42,6 +47,8 @@ button {
     cursor: pointer;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;  /* Smooth hover transition */
+    width: 100%;  /* Full width on smaller screens */
+    box-sizing: border-box;
 }
 
 button:hover {
@@ -52,20 +59,22 @@ h1 {
     font-family: 'Playfair Display', serif;  /* Decorative header font */
     color: #3e3b36;
     margin-bottom: 20px;
-    font-size: 2em;  /* Larger font for a book title feel */
+    font-size: 6vw;  /* Responsive font size */
+    text-align: center;  /* Center text on all devices */
 }
 
 p {
     color: #3e3b36;  /* Darker text for readability */
-    font-size: 1.2em;
+    font-size: 4vw;  /* Responsive font size */
     margin-top: 10px;
     line-height: 1.8;
     text-align: justify;
+    box-sizing: border-box;
 }
 
 p:last-child {
     font-family: 'Garamond', serif;
-    font-size: 1.2em;
+    font-size: 4vw;
     color: #3e3b36;
     text-align: right;  /* Align signature to the right */
     margin-top: 30px;
@@ -75,7 +84,31 @@ p:last-child {
     content: "❦";  /* Decorative element before and after message */
     display: block;
     text-align: center;
-    font-size: 2em;
+    font-size: 6vw;  /* Responsive size */
     color: #b08968;
     margin: 20px 0;
+}
+
+/* Media Queries for larger screens */
+@media (min-width: 768px) {
+    #codeEntry, #hiddenMessage {
+        max-width: 60%;
+        padding: 40px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1.2em;
+    }
+
+    p:last-child {
+        font-size: 1.2em;
+    }
+
+    #hiddenMessage::before, #hiddenMessage::after {
+        font-size: 2em;
+    }
 }
